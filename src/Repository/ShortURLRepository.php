@@ -22,6 +22,16 @@ class ShortURLRepository extends ServiceEntityRepository {
     }
 
     /**
+     * Get ShortURL with specified ID.
+     *
+     * @param int $id
+     * @return ShortURL|null
+     */
+    public function getOne(int $id): ?ShortURL {
+        return $this->findOneBy(["id" => $id]);
+    }
+
+    /**
      * Get ShortURL with specified source name.
      *
      * @param string $sourceName
@@ -102,6 +112,23 @@ class ShortURLRepository extends ServiceEntityRepository {
     public function saveShortURL(ShortURL $shortURL): bool {
         try {
             $this->getEntityManager()->persist($shortURL);
+            $this->getEntityManager()->flush();
+
+            return true;
+        } catch (Exception $exception) {
+            return false;
+        }
+    }
+
+    /**
+     * Remove provided ShortURL.
+     *
+     * @param ShortURL $shortURL
+     * @return bool
+     */
+    public function removeShortURL(ShortURL $shortURL): bool {
+        try {
+            $this->getEntityManager()->remove($shortURL);
             $this->getEntityManager()->flush();
 
             return true;

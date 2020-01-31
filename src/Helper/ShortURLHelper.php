@@ -61,7 +61,7 @@ class ShortURLHelper {
      * @param string $value
      * @return int|null
      */
-    public function validateLength(string $value): ?int {
+    public function validateInt(string $value): ?int {
         if (true === (bool)preg_match("/^[0-9]+$/", $value)) {
             return (int)$value;
         }

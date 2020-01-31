@@ -83,7 +83,6 @@ class ListCommand extends Command {
         $currentTable->setRows($itemsCollection);
 
         // Display summary table
-        $io->newLine();
         $currentTable->render();
 
         return 0;

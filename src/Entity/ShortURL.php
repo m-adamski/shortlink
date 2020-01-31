@@ -169,6 +169,13 @@ class ShortURL {
     }
 
     /**
+     * Toggle status.
+     */
+    public function toggleActive(): void {
+        $this->active = !$this->isActive();
+    }
+
+    /**
      * @return DateTime
      */
     public function getCreatedAt(): DateTime {

@@ -67,9 +67,9 @@ class GenerateCommand extends Command {
         // Validate provided options
         $optValidSince = null !== $optValidSince ? $this->shortURLHelper->validateDate($optValidSince) : null;
         $optValidUntil = null !== $optValidUntil ? $this->shortURLHelper->validateDate($optValidUntil) : null;
-        $optLength = null !== $optLength ? $this->shortURLHelper->validateLength($optLength) : 8;
+        $optLength = null !== $optLength ? $this->shortURLHelper->validateInt($optLength) : 8;
 
-        if (null !== $argDestinationURL && "" !== $argDestinationURL && true === $this->shortURLHelper->validateURL($argDestinationURL)) {
+        if (null !== $argDestinationURL && true === $this->shortURLHelper->validateURL($argDestinationURL)) {
 
             // Validate provided source name
             if (null === $argSourceName || (null !== $argSourceName && $this->shortURLHelper->validateSourceName($argSourceName))) {
@@ -82,7 +82,6 @@ class GenerateCommand extends Command {
 
                 // Save created ShortURL
                 if (true === $this->shortURLRepository->saveShortURL($shortURL)) {
-                    $io->newLine();
                     $io->writeln("Generated URL: <fg=green>" . $this->shortURLHelper->renderURL($shortURL->getSourceName()) . "</>");
                     $io->writeln("Destination URL: <fg=green>" . $shortURL->getDestinationURL() . "</>");
                 } else {
