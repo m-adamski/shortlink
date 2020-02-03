@@ -96,7 +96,7 @@ class ShortURLHelper {
      * @param string $characters
      * @return string
      */
-    public static function generateRandom(int $length, string $characters = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"): string {
+    public static function generateRandom(int $length, string $characters = "23456789abcdefghijkmnopqrstuvwxyz"): string {
         $randomString = "";
         $charactersLength = strlen($characters);
 

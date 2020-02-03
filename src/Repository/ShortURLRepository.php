@@ -17,6 +17,9 @@ use function Doctrine\ORM\QueryBuilder;
  */
 class ShortURLRepository extends ServiceEntityRepository {
 
+    /**
+     * {@inheritDoc}
+     */
     public function __construct(ManagerRegistry $registry) {
         parent::__construct($registry, ShortURL::class);
     }

@@ -67,7 +67,7 @@ class ListCommand extends Command {
             return [
                 $shortURL->getId(),
                 $shortURL->getAdditionalID(),
-                $shortURL->getSourceName(),
+                $this->shortURLHelper->renderURL($shortURL->getSourceName()),
                 $shortURL->getDestinationURL(),
                 $shortURL->getValidSince() ? $this->shortURLHelper->formatDate($shortURL->getValidSince()) : "-",
                 $shortURL->getValidUntil() ? $this->shortURLHelper->formatDate($shortURL->getValidUntil()) : "-",
